@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const comparisons = [
+  {
+    slug: 'chatgpt-vs-claude',
+    toolA: 'ChatGPT',
+    toolB: 'Claude',
+    category: 'AI Assistants',
+    excerpt: 'Which LLM is smarter, more creative, and worth your subscription? Deep-dive into capabilities, pricing, and real use cases.',
+    views: '24k',
+    isPopular: true,
+  },
+  {
+    slug: 'notion-vs-obsidian',
+    toolA: 'Notion',
+    toolB: 'Obsidian',
+    category: 'Productivity',
+    excerpt: 'Team collaboration vs. personal knowledge base. The definitive guide for knowledge workers in 2026.',
+    views: '18k',
+    isPopular: false,
+  },
+  {
+    slug: 'midjourney-vs-dalle',
+    toolA: 'Midjourney',
+    toolB: 'DALL·E 3',
+    category: 'AI Image',
+    excerpt: 'Style, quality, price — which AI image generator should you be using for your projects?',
+    views: '31k',
+    isPopular: true,
+  },
+  {
+    slug: 'linear-vs-jira',
+    toolA: 'Linear',
+    toolB: 'Jira',
+    category: 'Project Management',
+    excerpt: 'Fast, opinionated, modern vs. feature-rich but bloated. The project management showdown.',
+    views: '12k',
+    isPopular: false,
+  },
+  {
+    slug: 'surfer-vs-clearscope',
+    toolA: 'Surfer SEO',
+    toolB: 'Clearscope',
+    category: 'SEO',
+    excerpt: 'Both promise higher rankings. But which content optimizer is actually worth the investment?',
+    views: '9k',
+    isPopular: false,
+  },
+  {
+    slug: 'jasper-vs-copyai',
+    toolA: 'Jasper AI',
+    toolB: 'Copy.ai',
+    category: 'Copywriting',
+    excerpt: 'AI writing assistant battle: enterprise power vs. lightweight flexibility. Which fits your workflow?',
+    views: '15k',
+    isPopular: true,
+  },
+];
+---
+
+<Layout
+  title="AI Tool Comparisons"
+  description="Head-to-head comparisons of the best AI tools and SaaS software. Make smarter buying decisions."
+>
+  <Nav />
+
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-4">Tool Comparisons</h1>
+      <p class="text-text-secondary text-lg max-w-2xl">
+        Head-to-head breakdowns so you can pick the right tool without wasting money on the wrong one.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {comparisons.map(item => (
+        <a
+          href={`/compare/${item.slug}`}
+          class="group flex flex-col p-5 rounded-2xl bg-bg-surface border border-bg-border hover:border-brand-purple/40 hover:shadow-lg hover:shadow-brand-purple/5 transition-all duration-200"
+        >
+          <!-- VS Badge -->
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2 py-0.5 rounded-full bg-bg-elevated text-text-muted text-xs font-medium">{item.category}</span>
+            {item.isPopular && (
+              <span class="px-2 py-0.5 rounded-full bg-brand-purple/10 text-brand-purple-light text-xs font-semibold">Popular</span>
+            )}
+          </div>
+
+          <!-- Tool names -->
+          <div class="flex items-center gap-2 mb-3">
+            <div class="flex-1 px-3 py-2 rounded-xl bg-bg-elevated text-center">
+              <span class="font-bold text-text-primary text-sm">{item.toolA}</span>
+            </div>
+            <span class="text-text-muted font-black text-xs">VS</span>
+            <div class="flex-1 px-3 py-2 rounded-xl bg-bg-elevated text-center">
+              <span class="font-bold text-text-primary text-sm">{item.toolB}</span>
+            </div>
+          </div>
+
+          <p class="text-text-muted text-sm leading-relaxed flex-1 mb-4">{item.excerpt}</p>
+
+          <div class="flex items-center justify-between text-xs text-text-muted mt-auto">
+            <span>{item.views} views</span>
+            <span class="text-brand-purple group-hover:text-brand-purple-light transition-colors font-semibold flex items-center gap-1">
+              Compare
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </main>
+
+  <Footer />
+</Layout>

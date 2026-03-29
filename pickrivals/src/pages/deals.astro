@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import DealCard from '../components/DealCard.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+
+const allDeals = [
+  {
+    name: 'Notion AI',
+    tagline: 'All-in-one workspace with AI writing, summarization, and Q&A built right in.',
+    discount: '50%',
+    originalPrice: '$16/mo',
+    dealPrice: '$8/mo',
+    category: 'Productivity',
+    badge: '✨ Recurring',
+    affiliateUrl: '#notion-affiliate',
+    isHot: true,
+    expiresAt: 'April 15, 2026',
+  },
+  {
+    name: 'Jasper AI',
+    tagline: 'AI writing assistant for marketers and content teams. 10x your output.',
+    discount: '40%',
+    originalPrice: '$49/mo',
+    dealPrice: '$29/mo',
+    category: 'Copywriting',
+    badge: '💰 High Commission',
+    affiliateUrl: '#jasper-affiliate',
+    isHot: false,
+  },
+  {
+    name: 'Surfer SEO',
+    tagline: 'Data-driven content optimization. Rank higher with AI-powered briefs.',
+    discount: '30%',
+    originalPrice: '$89/mo',
+    dealPrice: '$62/mo',
+    category: 'SEO',
+    badge: '📈 Top Pick',
+    affiliateUrl: '#surfer-affiliate',
+    isHot: false,
+  },
+  {
+    name: 'Loom',
+    tagline: 'Async video messaging for teams. Record, share, and get feedback fast.',
+    discount: '35%',
+    originalPrice: '$12.50/mo',
+    dealPrice: '$8/mo',
+    category: 'Communication',
+    affiliateUrl: '#loom-affiliate',
+    isHot: false,
+  },
+  {
+    name: 'Writesonic',
+    tagline: 'AI content platform with 100+ templates. Blog posts, ads, product descriptions.',
+    discount: '45%',
+    originalPrice: '$19/mo',
+    dealPrice: '$10/mo',
+    category: 'Copywriting',
+    badge: '🆕 New Deal',
+    affiliateUrl: '#writesonic-affiliate',
+    isHot: true,
+    expiresAt: 'March 31, 2026',
+  },
+  {
+    name: 'Grammarly Business',
+    tagline: 'AI-powered writing assistant for teams. Tone detection, plagiarism check.',
+    discount: '20%',
+    originalPrice: '$15/mo',
+    dealPrice: '$12/mo',
+    category: 'Writing',
+    affiliateUrl: '#grammarly-affiliate',
+    isHot: false,
+  },
+];
+
+const categories = ['All', 'Productivity', 'Copywriting', 'SEO', 'Communication', 'Writing'];
+---
+
+<Layout
+  title="Best AI & SaaS Deals"
+  description="Exclusive discounts on the best AI tools and SaaS software. Updated weekly with the hottest deals."
+>
+  <Nav />
+
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- Header -->
+    <div class="mb-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-semibold mb-4">
+        🔥 Updated this week
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-text-primary mb-4">
+        Best AI & SaaS Deals
+      </h1>
+      <p class="text-text-secondary text-lg max-w-xl mx-auto">
+        Hand-picked discounts on tools that actually move the needle. New deals every Monday.
+      </p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex flex-wrap gap-2 justify-center mb-10">
+      {categories.map(cat => (
+        <button
+          class="px-4 py-2 rounded-full border border-bg-border text-text-secondary text-sm font-medium hover:border-brand-purple/40 hover:text-brand-purple-light transition-colors data-[active]:bg-brand-purple/10 data-[active]:border-brand-purple/40 data-[active]:text-brand-purple-light"
+          data-category={cat}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Deals Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+      {allDeals.map(deal => <DealCard {...deal} />)}
+    </div>
+
+    <!-- Newsletter -->
+    <NewsletterSignup />
+
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import DealCard from '../components/DealCard.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+
+const featuredDeals = [
+  {
+    name: 'Notion AI',
+    tagline: 'All-in-one workspace with AI writing, summarization, and Q&A built right in.',
+    discount: '50%',
+    originalPrice: '$16/mo',
+    dealPrice: '$8/mo',
+    category: 'Productivity',
+    badge: '✨ Recurring',
+    affiliateUrl: '#notion-affiliate',
+    isHot: true,
+    expiresAt: 'April 15, 2026',
+  },
+  {
+    name: 'Jasper AI',
+    tagline: 'AI writing assistant for marketers and content teams. 10x your output.',
+    discount: '40%',
+    originalPrice: '$49/mo',
+    dealPrice: '$29/mo',
+    category: 'Copywriting',
+    badge: '💰 High Commission',
+    affiliateUrl: '#jasper-affiliate',
+    isHot: false,
+  },
+  {
+    name: 'Surfer SEO',
+    tagline: 'Data-driven content optimization. Rank higher with AI-powered briefs.',
+    discount: '30%',
+    originalPrice: '$89/mo',
+    dealPrice: '$62/mo',
+    category: 'SEO',
+    badge: '📈 Top Pick',
+    affiliateUrl: '#surfer-affiliate',
+    isHot: false,
+  },
+];
+
+const topComparisons = [
+  { slug: 'chatgpt-vs-claude', title: 'ChatGPT vs Claude', subtitle: 'Which AI assistant wins in 2026?', views: '24k' },
+  { slug: 'notion-vs-obsidian', title: 'Notion vs Obsidian', subtitle: 'Best note-taking app for knowledge workers', views: '18k' },
+  { slug: 'midjourney-vs-dalle', title: 'Midjourney vs DALL·E 3', subtitle: 'AI image generation head-to-head', views: '31k' },
+  { slug: 'linear-vs-jira', title: 'Linear vs Jira', subtitle: 'Modern vs legacy project management', views: '12k' },
+];
+---
+
+<Layout title="Best AI Tool Deals & SaaS Comparisons">
+  <Nav />
+
+  <main class="relative z-10">
+
+    <!-- Hero -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-purple/10 border border-brand-purple/20 text-brand-purple-light text-xs font-semibold mb-6 animate-fade-in">
+        <span class="w-2 h-2 rounded-full bg-brand-purple animate-pulse"></span>
+        Updated weekly with the best SaaS deals
+      </div>
+
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-text-primary leading-tight tracking-tight mb-6 animate-slide-up">
+        Pick the Right<br />
+        <span class="bg-gradient-to-r from-brand-purple-light via-brand-blue-light to-brand-teal bg-clip-text text-transparent">
+          AI Tools. Save Big.
+        </span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-text-secondary text-xl leading-relaxed mb-10">
+        Honest comparisons, exclusive deals, and weekly discounts on the best AI and SaaS tools. Stop overpaying for software.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/deals"
+          class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-blue text-white font-bold text-base hover:opacity-90 transition-opacity shadow-xl shadow-brand-purple/30"
+        >
+          🔥 View All Deals
+        </a>
+        <a
+          href="/compare"
+          class="px-8 py-3.5 rounded-xl border border-bg-border bg-bg-elevated text-text-primary font-semibold text-base hover:border-brand-purple/40 transition-colors"
+        >
+          Compare Tools →
+        </a>
+      </div>
+
+      <!-- Social proof -->
+      <div class="mt-10 flex items-center justify-center gap-6 text-text-muted text-sm">
+        <span class="flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-purple"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          1,000+ subscribers
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-purple"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          50+ tools reviewed
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-purple"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Weekly updated
+        </span>
+      </div>
+    </section>
+
+    <!-- Featured Deals -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-extrabold text-text-primary">🔥 Featured Deals</h2>
+          <p class="text-text-muted text-sm mt-1">Hand-picked discounts, updated every week</p>
+        </div>
+        <a href="/deals" class="text-brand-purple text-sm font-semibold hover:text-brand-purple-light transition-colors flex items-center gap-1">
+          All deals
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {featuredDeals.map(deal => <DealCard {...deal} />)}
+      </div>
+    </section>
+
+    <!-- Top Comparisons -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-extrabold text-text-primary">⚡ Popular Comparisons</h2>
+          <p class="text-text-muted text-sm mt-1">In-depth breakdowns to make the right call</p>
+        </div>
+        <a href="/compare" class="text-brand-purple text-sm font-semibold hover:text-brand-purple-light transition-colors flex items-center gap-1">
+          All comparisons
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {topComparisons.map(item => (
+          <a
+            href={`/compare/${item.slug}`}
+            class="group flex items-center justify-between p-5 rounded-2xl bg-bg-surface border border-bg-border hover:border-brand-purple/40 hover:bg-bg-elevated transition-all duration-200"
+          >
+            <div>
+              <h3 class="font-bold text-text-primary group-hover:text-brand-purple-light transition-colors">{item.title}</h3>
+              <p class="text-text-muted text-sm mt-0.5">{item.subtitle}</p>
+            </div>
+            <div class="flex items-center gap-3 ml-4 shrink-0">
+              <span class="text-xs text-text-muted">{item.views} views</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-text-muted group-hover:text-brand-purple transition-colors">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <NewsletterSignup />
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
